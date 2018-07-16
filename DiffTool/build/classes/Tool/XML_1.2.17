@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="PropertyConfigurator" package="org.apache.log4j" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="registry" type="Hashtable" visibility="protected"/>
+        <Field name="repository" type="LoggerRepository" visibility="private"/>
+        <Field name="loggerFactory" type="LoggerFactory" visibility="protected"/>
+        <Field name="CATEGORY_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="LOGGER_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="FACTORY_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="ADDITIVITY_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="ROOT_CATEGORY_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="ROOT_LOGGER_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="APPENDER_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="RENDERER_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="THRESHOLD_PREFIX" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="THROWABLE_RENDERER_PREFIX" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="LOGGER_REF" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ROOT_REF" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="APPENDER_REF_TAG" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="LOGGER_FACTORY_KEY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="RESET_KEY" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="INTERNAL_ROOT_NAME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="doConfigure" returnType="void" visibility="public">
+          <Argument type="String" name="configFileName"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="configure" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="configFilename"/>
+        </Method>
+        <Method name="configure" returnType="void" visibility="public" isStatic="true">
+          <Argument type="java.net.URL" name="configURL"/>
+        </Method>
+        <Method name="configure" returnType="void" visibility="public" isStatic="true">
+          <Argument type="InputStream" name="inputStream"/>
+        </Method>
+        <Method name="configure" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Properties" name="properties"/>
+        </Method>
+        <Method name="configureAndWatch" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="configFilename"/>
+        </Method>
+        <Method name="configureAndWatch" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="configFilename"/>
+          <Argument type="long" name="delay"/>
+        </Method>
+        <Method name="doConfigure" returnType="void" visibility="public">
+          <Argument type="Properties" name="properties"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="doConfigure" returnType="void" visibility="public">
+          <Argument type="InputStream" name="inputStream"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="doConfigure" returnType="void" visibility="public">
+          <Argument type="java.net.URL" name="configURL"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="configureLoggerFactory" returnType="void" visibility="protected">
+          <Argument type="Properties" name="props"/>
+        </Method>
+        <Method name="configureRootCategory" returnType="void" visibility="package">
+          <Argument type="Properties" name="props"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="parseCatsAndRenderers" returnType="void" visibility="protected">
+          <Argument type="Properties" name="props"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="parseAdditivityForLogger" returnType="void" visibility="package">
+          <Argument type="Properties" name="props"/>
+          <Argument type="Logger" name="cat"/>
+          <Argument type="String" name="loggerName"/>
+        </Method>
+        <Method name="parseCategory" returnType="void" visibility="package">
+          <Argument type="Properties" name="props"/>
+          <Argument type="Logger" name="logger"/>
+          <Argument type="String" name="optionKey"/>
+          <Argument type="String" name="loggerName"/>
+          <Argument type="String" name="value"/>
+        </Method>
+        <Method name="parseAppender" returnType="Appender" visibility="package">
+          <Argument type="Properties" name="props"/>
+          <Argument type="String" name="appenderName"/>
+        </Method>
+        <Method name="parseErrorHandler" returnType="void" visibility="private">
+          <Argument type="ErrorHandler" name="eh"/>
+          <Argument type="String" name="errorHandlerPrefix"/>
+          <Argument type="Properties" name="props"/>
+          <Argument type="LoggerRepository" name="hierarchy"/>
+        </Method>
+        <Method name="parseAppenderFilters" returnType="void" visibility="package">
+          <Argument type="Properties" name="props"/>
+          <Argument type="String" name="appenderName"/>
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="registryPut" returnType="void" visibility="package">
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="registryGet" returnType="Appender" visibility="package">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PropertyWatchdog" package="org.apache.log4j" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="String" name="filename"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doOnChange" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="NameValue" package="org.apache.log4j" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="key" type="String" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="String" name="value"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SortedKeyEnumeration" package="org.apache.log4j" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="e" type="Enumeration" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Hashtable" name="ht"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="hasMoreElements" returnType="boolean" visibility="public"/>
+        <Method name="nextElement" returnType="Object" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BasicConfigurator" package="org.apache.log4j" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="configure" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="configure" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="resetConfiguration" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Interface name="Appender" package="org.apache.log4j" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Methods>
+        <Method name="addFilter" returnType="void" visibility="package">
+          <Argument type="Filter" name="newFilter"/>
+        </Method>
+        <Method name="getFilter" returnType="Filter" visibility="public"/>
+        <Method name="clearFilters" returnType="void" visibility="public"/>
+        <Method name="close" returnType="void" visibility="public"/>
+        <Method name="doAppend" returnType="void" visibility="public">
+          <Argument type="LoggingEvent" name="event"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setErrorHandler" returnType="void" visibility="public">
+          <Argument type="ErrorHandler" name="errorHandler"/>
+        </Method>
+        <Method name="getErrorHandler" returnType="ErrorHandler" visibility="public"/>
+        <Method name="setLayout" returnType="void" visibility="public">
+          <Argument type="Layout" name="layout"/>
+        </Method>
+        <Method name="getLayout" returnType="Layout" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="requiresLayout" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="LogManager" package="org.apache.log4j" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="DEFAULT_CONFIGURATION_FILE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_XML_CONFIGURATION_FILE" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_CONFIGURATION_KEY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONFIGURATOR_CLASS_KEY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_INIT_OVERRIDE_KEY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="guard" type="Object" visibility="private" isStatic="true"/>
+        <Field name="repositorySelector" type="RepositorySelector" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setRepositorySelector" returnType="void" visibility="public" isStatic="true">
+          <Argument type="RepositorySelector" name="selector"/>
+          <Argument type="Object" name="guard"/>
+        </Method>
+        <Method name="isLikelySafeScenario" returnType="boolean" visibility="private" isStatic="true">
+          <Argument type="Exception" name="ex"/>
+        </Method>
+        <Method name="getLoggerRepository" returnType="LoggerRepository" visibility="public" isStatic="true"/>
+        <Method name="getRootLogger" returnType="Logger" visibility="public" isStatic="true"/>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="Class" name="clazz"/>
+        </Method>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+          <Argument type="LoggerFactory" name="factory"/>
+        </Method>
+        <Method name="exists" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getCurrentLoggers" returnType="Enumeration" visibility="public" isStatic="true"/>
+        <Method name="shutdown" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="resetConfiguration" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="HTMLLayout" package="org.apache.log4j" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="BUF_SIZE" type="int" visibility="protected" isFinal="true"/>
+        <Field name="MAX_CAPACITY" type="int" visibility="protected" isFinal="true"/>
+        <Field name="TRACE_PREFIX" type="String" visibility="package" isStatic="true"/>
+        <Field name="sbuf" type="StringBuffer" visibility="private"/>
+        <Field name="LOCATION_INFO_OPTION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="TITLE_OPTION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="locationInfo" type="boolean" visibility="package"/>
+        <Field name="title" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setLocationInfo" returnType="void" visibility="public">
+          <Argument type="boolean" name="flag"/>
+        </Method>
+        <Method name="getLocationInfo" returnType="boolean" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="getContentType" returnType="String" visibility="public"/>
+        <Method name="activateOptions" returnType="void" visibility="public"/>
+        <Method name="format" returnType="String" visibility="public">
+          <Argument type="LoggingEvent" name="event"/>
+        </Method>
+        <Method name="appendThrowableAsHTML" returnType="void" visibility="package">
+          <Argument type="String[]" name="s"/>
+          <Argument type="StringBuffer" name="sbuf"/>
+        </Method>
+        <Method name="getHeader" returnType="String" visibility="public"/>
+        <Method name="getFooter" returnType="String" visibility="public"/>
+        <Method name="ignoresThrowable" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogLevel" package="org.apache.log4j.lf5" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="FATAL" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ERROR" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="WARN" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="INFO" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEBUG" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SEVERE" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="WARNING" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONFIG" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FINE" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FINER" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FINEST" type="LogLevel" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="_label" type="String" visibility="protected"/>
+        <Field name="_precedence" type="int" visibility="protected"/>
+        <Field name="_log4JLevels" type="LogLevel[]" visibility="private" isStatic="true"/>
+        <Field name="_jdk14Levels" type="LogLevel[]" visibility="private" isStatic="true"/>
+        <Field name="_allDefaultLevels" type="LogLevel[]" visibility="private" isStatic="true"/>
+        <Field name="_logLevelMap" type="Map" visibility="private" isStatic="true"/>
+        <Field name="_logLevelColorMap" type="Map" visibility="private" isStatic="true"/>
+        <Field name="_registeredLogLevelMap" type="Map" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="label"/>
+          <Argument type="int" name="precedence"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getLabel" returnType="String" visibility="public"/>
+        <Method name="encompasses" returnType="boolean" visibility="public">
+          <Argument type="LogLevel" name="level"/>
+        </Method>
+        <Method name="valueOf" returnType="LogLevel" visibility="public" isStatic="true">
+          <Argument type="String" name="level"/>
+        </Method>
+        <Method name="register" returnType="LogLevel" visibility="public" isStatic="true">
+          <Argument type="LogLevel" name="logLevel"/>
+        </Method>
+        <Method name="register" returnType="void" visibility="public" isStatic="true">
+          <Argument type="LogLevel[]" name="logLevels"/>
+        </Method>
+        <Method name="register" returnType="void" visibility="public" isStatic="true">
+          <Argument type="List" name="logLevels"/>
+        </Method>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="setLogLevelColorMap" returnType="void" visibility="public">
+          <Argument type="LogLevel" name="level"/>
+          <Argument type="Color" name="color"/>
+        </Method>
+        <Method name="resetLogLevelColorMap" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getLog4JLevels" returnType="List" visibility="public" isStatic="true"/>
+        <Method name="getJdk14Levels" returnType="List" visibility="public" isStatic="true"/>
+        <Method name="getAllDefaultLevels" returnType="List" visibility="public" isStatic="true"/>
+        <Method name="getLogLevelColorMap" returnType="Map" visibility="public" isStatic="true"/>
+        <Method name="getPrecedence" returnType="int" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="Loader" package="org.apache.log4j.helpers" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="TSTR" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="java1" type="boolean" visibility="private" isStatic="true"/>
+        <Field name="ignoreTCL" type="boolean" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getResource" returnType="URL" visibility="public" isStatic="true">
+          <Argument type="String" name="resource"/>
+          <Argument type="Class" name="clazz"/>
+        </Method>
+        <Method name="getResource" returnType="URL" visibility="public" isStatic="true">
+          <Argument type="String" name="resource"/>
+        </Method>
+        <Method name="isJava1" returnType="boolean" visibility="public" isStatic="true"/>
+        <Method name="getTCL" returnType="ClassLoader" visibility="private" isStatic="true"/>
+        <Method name="loadClass" returnType="Class" visibility="public" isStatic="true">
+          <Argument type="String" name="clazz"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EventDetails" package="org.apache.log4j.chainsaw" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="mTimeStamp" type="long" visibility="private" isFinal="true"/>
+        <Field name="mPriority" type="Priority" visibility="private" isFinal="true"/>
+        <Field name="mCategoryName" type="String" visibility="private" isFinal="true"/>
+        <Field name="mNDC" type="String" visibility="private" isFinal="true"/>
+        <Field name="mThreadName" type="String" visibility="private" isFinal="true"/>
+        <Field name="mMessage" type="String" visibility="private" isFinal="true"/>
+        <Field name="mThrowableStrRep" type="String[]" visibility="private" isFinal="true"/>
+        <Field name="mLocationDetails" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="long" name="aTimeStamp"/>
+          <Argument type="Priority" name="aPriority"/>
+          <Argument type="String" name="aCategoryName"/>
+          <Argument type="String" name="aNDC"/>
+          <Argument type="String" name="aThreadName"/>
+          <Argument type="String" name="aMessage"/>
+          <Argument type="String[]" name="aThrowableStrRep"/>
+          <Argument type="String" name="aLocationDetails"/>
+        </Constructor>
+        <Constructor visibility="package">
+          <Argument type="LoggingEvent" name="aEvent"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTimeStamp" returnType="long" visibility="package"/>
+        <Method name="getPriority" returnType="Priority" visibility="package"/>
+        <Method name="getCategoryName" returnType="String" visibility="package"/>
+        <Method name="getNDC" returnType="String" visibility="package"/>
+        <Method name="getThreadName" returnType="String" visibility="package"/>
+        <Method name="getMessage" returnType="String" visibility="package"/>
+        <Method name="getLocationDetails" returnType="String" visibility="package"/>
+        <Method name="getThrowableStrRep" returnType="String[]" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="AbstractDynamicMBean" package="org.apache.log4j.jmx" visibility="public" isAbstract="true" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="dClassName" type="String" visibility="package"/>
+        <Field name="server" type="MBeanServer" visibility="package"/>
+        <Field name="mbeanList" type="Vector" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAppenderName" returnType="String" visibility="protected" isStatic="true">
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="getAttributes" returnType="AttributeList" visibility="public">
+          <Argument type="String[]" name="attributeNames"/>
+        </Method>
+        <Method name="setAttributes" returnType="AttributeList" visibility="public">
+          <Argument type="AttributeList" name="attributes"/>
+        </Method>
+        <Method name="getLogger" returnType="Logger" visibility="protected" isAbstract="true"/>
+        <Method name="postDeregister" returnType="void" visibility="public"/>
+        <Method name="postRegister" returnType="void" visibility="public">
+          <Argument type="java.lang.Boolean" name="registrationDone"/>
+        </Method>
+        <Method name="preRegister" returnType="ObjectName" visibility="public">
+          <Argument type="MBeanServer" name="server"/>
+          <Argument type="ObjectName" name="name"/>
+        </Method>
+        <Method name="registerMBean" returnType="void" visibility="protected">
+          <Argument type="Object" name="mbean"/>
+          <Argument type="ObjectName" name="objectName"/>
+        </Method>
+        <Method name="preDeregister" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="LogRecordFilter" package="org.apache.log4j.lf5" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Methods>
+        <Method name="passes" returnType="boolean" visibility="public">
+          <Argument type="LogRecord" name="record"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="Logger" package="org.apache.log4j" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="FQCN" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="Class" name="clazz"/>
+        </Method>
+        <Method name="getRootLogger" returnType="Logger" visibility="public" isStatic="true"/>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+          <Argument type="LoggerFactory" name="factory"/>
+        </Method>
+        <Method name="trace" returnType="void" visibility="public">
+          <Argument type="Object" name="message"/>
+        </Method>
+        <Method name="trace" returnType="void" visibility="public">
+          <Argument type="Object" name="message"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="isTraceEnabled" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PatternLayout" package="org.apache.log4j" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="DEFAULT_CONVERSION_PATTERN" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="TTCC_CONVERSION_PATTERN" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="BUF_SIZE" type="int" visibility="protected" isFinal="true"/>
+        <Field name="MAX_CAPACITY" type="int" visibility="protected" isFinal="true"/>
+        <Field name="sbuf" type="StringBuffer" visibility="private"/>
+        <Field name="pattern" type="String" visibility="private"/>
+        <Field name="head" type="PatternConverter" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="pattern"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setConversionPattern" returnType="void" visibility="public">
+          <Argument type="String" name="conversionPattern"/>
+        </Method>
+        <Method name="getConversionPattern" returnType="String" visibility="public"/>
+        <Method name="activateOptions" returnType="void" visibility="public"/>
+        <Method name="ignoresThrowable" returnType="boolean" visibility="public"/>
+        <Method name="createPatternParser" returnType="PatternParser" visibility="protected">
+          <Argument type="String" name="pattern"/>
+        </Method>
+        <Method name="format" returnType="String" visibility="public">
+          <Argument type="LoggingEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LogEvent" package="org.apache.log4j.pattern" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="startTime" type="long" visibility="private" isStatic="true"/>
+        <Field name="fqnOfCategoryClass" type="String" visibility="public" isFinal="true" isTransient="true"/>
+        <Field name="logger" type="Category" visibility="private" isTransient="true"/>
+        <Field name="categoryName" type="String" visibility="public" isFinal="true"/>
+        <Field name="level" type="Priority" visibility="public" isTransient="true"/>
+        <Field name="ndc" type="String" visibility="private"/>
+        <Field name="mdcCopy" type="Hashtable" visibility="private"/>
+        <Field name="ndcLookupRequired" type="boolean" visibility="private"/>
+        <Field name="mdcCopyLookupRequired" type="boolean" visibility="private"/>
+        <Field name="message" type="Object" visibility="private" isTransient="true"/>
+        <Field name="renderedMessage" type="String" visibility="private"/>
+        <Field name="threadName" type="String" visibility="private"/>
+        <Field name="throwableInfo" type="ThrowableInformation" visibility="private"/>
+        <Field name="timeStamp" type="long" visibility="public" isFinal="true"/>
+        <Field name="locationInfo" type="LocationInfo" visibility="private"/>
+        <Field name="serialVersionUID" type="long" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="PARAM_ARRAY" type="Integer[]" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="TO_LEVEL" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="TO_LEVEL_PARAMS" type="Class[]" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="methodCache" type="Hashtable" visibility="package" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="fqnOfCategoryClass"/>
+          <Argument type="Category" name="logger"/>
+          <Argument type="Priority" name="level"/>
+          <Argument type="Object" name="message"/>
+          <Argument type="Throwable" name="throwable"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="fqnOfCategoryClass"/>
+          <Argument type="Category" name="logger"/>
+          <Argument type="long" name="timeStamp"/>
+          <Argument type="Priority" name="level"/>
+          <Argument type="Object" name="message"/>
+          <Argument type="Throwable" name="throwable"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="fqnOfCategoryClass"/>
+          <Argument type="Logger" name="logger"/>
+          <Argument type="long" name="timeStamp"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Object" name="message"/>
+          <Argument type="String" name="threadName"/>
+          <Argument type="ThrowableInformation" name="throwable"/>
+          <Argument type="String" name="ndc"/>
+          <Argument type="LocationInfo" name="info"/>
+          <Argument type="java.util.Map" name="properties"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getLocationInformation" returnType="LocationInfo" visibility="public"/>
+        <Method name="getLevel" returnType="Level" visibility="public"/>
+        <Method name="getLoggerName" returnType="String" visibility="public"/>
+        <Method name="getMessage" returnType="Object" visibility="public"/>
+        <Method name="getNDC" returnType="String" visibility="public"/>
+        <Method name="getMDC" returnType="Object" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getMDCCopy" returnType="void" visibility="public"/>
+        <Method name="getRenderedMessage" returnType="String" visibility="public"/>
+        <Method name="getStartTime" returnType="long" visibility="public" isStatic="true"/>
+        <Method name="getThreadName" returnType="String" visibility="public"/>
+        <Method name="getThrowableInformation" returnType="ThrowableInformation" visibility="public"/>
+        <Method name="getThrowableStrRep" returnType="String[]" visibility="public"/>
+        <Method name="readLevel" returnType="void" visibility="private">
+          <Argument type="ObjectInputStream" name="ois"/>
+        </Method>
+        <Method name="readObject" returnType="void" visibility="private">
+          <Argument type="ObjectInputStream" name="ois"/>
+        </Method>
+        <Method name="writeObject" returnType="void" visibility="private">
+          <Argument type="ObjectOutputStream" name="oos"/>
+        </Method>
+        <Method name="writeLevel" returnType="void" visibility="private">
+          <Argument type="ObjectOutputStream" name="oos"/>
+        </Method>
+        <Method name="setProperty" returnType="void" visibility="public" isFinal="true">
+          <Argument type="String" name="propName"/>
+          <Argument type="String" name="propValue"/>
+        </Method>
+        <Method name="getProperty" returnType="String" visibility="public" isFinal="true">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="locationInformationExists" returnType="boolean" visibility="public" isFinal="true"/>
+        <Method name="getTimeStamp" returnType="long" visibility="public" isFinal="true"/>
+        <Method name="getPropertyKeySet" returnType="Set" visibility="public"/>
+        <Method name="getProperties" returnType="Map" visibility="public"/>
+        <Method name="getFQNOfLoggerClass" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogRecord" package="org.apache.log4j.lf5" visibility="public" isAbstract="true" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="_seqCount" type="long" visibility="protected" isStatic="true"/>
+        <Field name="_level" type="LogLevel" visibility="protected"/>
+        <Field name="_message" type="String" visibility="protected"/>
+        <Field name="_sequenceNumber" type="long" visibility="protected"/>
+        <Field name="_millis" type="long" visibility="protected"/>
+        <Field name="_category" type="String" visibility="protected"/>
+        <Field name="_thread" type="String" visibility="protected"/>
+        <Field name="_thrownStackTrace" type="String" visibility="protected"/>
+        <Field name="_thrown" type="Throwable" visibility="protected"/>
+        <Field name="_ndc" type="String" visibility="protected"/>
+        <Field name="_location" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getLevel" returnType="LogLevel" visibility="public"/>
+        <Method name="setLevel" returnType="void" visibility="public">
+          <Argument type="LogLevel" name="level"/>
+        </Method>
+        <Method name="isSevereLevel" returnType="boolean" visibility="public" isAbstract="true"/>
+        <Method name="hasThrown" returnType="boolean" visibility="public"/>
+        <Method name="isFatal" returnType="boolean" visibility="public"/>
+        <Method name="getCategory" returnType="String" visibility="public"/>
+        <Method name="setCategory" returnType="void" visibility="public">
+          <Argument type="String" name="category"/>
+        </Method>
+        <Method name="getMessage" returnType="String" visibility="public"/>
+        <Method name="setMessage" returnType="void" visibility="public">
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="getSequenceNumber" returnType="long" visibility="public"/>
+        <Method name="setSequenceNumber" returnType="void" visibility="public">
+          <Argument type="long" name="number"/>
+        </Method>
+        <Method name="getMillis" returnType="long" visibility="public"/>
+        <Method name="setMillis" returnType="void" visibility="public">
+          <Argument type="long" name="millis"/>
+        </Method>
+        <Method name="getThreadDescription" returnType="String" visibility="public"/>
+        <Method name="setThreadDescription" returnType="void" visibility="public">
+          <Argument type="String" name="threadDescription"/>
+        </Method>
+        <Method name="getThrownStackTrace" returnType="String" visibility="public"/>
+        <Method name="setThrownStackTrace" returnType="void" visibility="public">
+          <Argument type="String" name="trace"/>
+        </Method>
+        <Method name="getThrown" returnType="Throwable" visibility="public"/>
+        <Method name="setThrown" returnType="void" visibility="public">
+          <Argument type="Throwable" name="thrown"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNDC" returnType="String" visibility="public"/>
+        <Method name="setNDC" returnType="void" visibility="public">
+          <Argument type="String" name="ndc"/>
+        </Method>
+        <Method name="getLocation" returnType="String" visibility="public"/>
+        <Method name="setLocation" returnType="void" visibility="public">
+          <Argument type="String" name="location"/>
+        </Method>
+        <Method name="resetSequenceNumber" returnType="void" visibility="public" isStatic="true" isSynchronized="true"/>
+        <Method name="getNextId" returnType="long" visibility="protected" isStatic="true" isSynchronized="true"/>
+      </Methods>
+    </Class>
+    <Class name="Layout" package="org.apache.log4j" visibility="public" isAbstract="true" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="LINE_SEP" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="LINE_SEP_LEN" type="int" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="format" returnType="String" visibility="public" isAbstract="true">
+          <Argument type="LoggingEvent" name="event"/>
+        </Method>
+        <Method name="getContentType" returnType="String" visibility="public"/>
+        <Method name="getHeader" returnType="String" visibility="public"/>
+        <Method name="getFooter" returnType="String" visibility="public"/>
+        <Method name="ignoresThrowable" returnType="boolean" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="LogTable" package="org.apache.log4j.lf5.viewer" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="_rowHeight" type="int" visibility="protected"/>
+        <Field name="_detailTextArea" type="JTextArea" visibility="protected"/>
+        <Field name="_numCols" type="int" visibility="protected"/>
+        <Field name="_tableColumns" type="TableColumn[]" visibility="protected"/>
+        <Field name="_colWidths" type="int[]" visibility="protected"/>
+        <Field name="_colNames" type="LogTableColumn[]" visibility="protected"/>
+        <Field name="_colDate" type="int" visibility="protected"/>
+        <Field name="_colThread" type="int" visibility="protected"/>
+        <Field name="_colMessageNum" type="int" visibility="protected"/>
+        <Field name="_colLevel" type="int" visibility="protected"/>
+        <Field name="_colNDC" type="int" visibility="protected"/>
+        <Field name="_colCategory" type="int" visibility="protected"/>
+        <Field name="_colMessage" type="int" visibility="protected"/>
+        <Field name="_colLocation" type="int" visibility="protected"/>
+        <Field name="_colThrown" type="int" visibility="protected"/>
+        <Field name="_dateFormatManager" type="DateFormatManager" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JTextArea" name="detailTextArea"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDateFormatManager" returnType="DateFormatManager" visibility="public"/>
+        <Method name="setDateFormatManager" returnType="void" visibility="public">
+          <Argument type="DateFormatManager" name="dfm"/>
+        </Method>
+        <Method name="clearLogRecords" returnType="void" visibility="public" isSynchronized="true"/>
+        <Method name="getFilteredLogTableModel" returnType="FilteredLogTableModel" visibility="public"/>
+        <Method name="setDetailedView" returnType="void" visibility="public"/>
+        <Method name="setView" returnType="void" visibility="public">
+          <Argument type="List" name="columns"/>
+        </Method>
+        <Method name="setFont" returnType="void" visibility="public">
+          <Argument type="Font" name="font"/>
+        </Method>
+        <Method name="init" returnType="void" visibility="protected"/>
+        <Method name="getColumnNameAndNumber" returnType="Vector" visibility="protected"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="org.apache.log4j.jmx.AbstractDynamicMBean" target="org.apache.log4j.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="_level" source="org.apache.log4j.lf5.LogRecord" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="CONFIG" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.helpers.Loader" target="org.apache.log4j.helpers.Loader" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.Logger" target="org.apache.log4j.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="WARNING" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.jmx.AbstractDynamicMBean" target="org.apache.log4j.Appender" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.BasicConfigurator" target="org.apache.log4j.Appender" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="FINER" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ERROR" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="FINE" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.Appender" target="org.apache.log4j.Layout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="FATAL" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.apache.log4j.HTMLLayout" target="org.apache.log4j.Layout"/>
+    <HasRelation name="INFO" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="DEBUG" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.PropertyConfigurator" target="org.apache.log4j.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.lf5.viewer.LogTable" target="org.apache.log4j.lf5.viewer.LogTable" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="WARN" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="SEVERE" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="FINEST" source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.lf5.LogLevel" target="org.apache.log4j.lf5.LogLevel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.lf5.LogRecordFilter" target="org.apache.log4j.lf5.LogRecord" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.lf5.LogRecord" target="org.apache.log4j.lf5.LogLevel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.log4j.PropertyConfigurator" target="org.apache.log4j.Appender" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.apache.log4j.PatternLayout" target="org.apache.log4j.Layout"/>
+    <UseRelation source="org.apache.log4j.LogManager" target="org.apache.log4j.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

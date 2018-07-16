@@ -1,0 +1,7 @@
+SizeBasedTriggeringPolicy
+Format
+Loggers
+Core
+Script
+KeyValuePair
+Priority

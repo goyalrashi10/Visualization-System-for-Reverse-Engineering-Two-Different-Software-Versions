@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Interface name="ErrorHandler" package="org.apache.logging.log4j.core" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Methods>
+        <Method name="error" returnType="void" visibility="package">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="error" returnType="void" visibility="package">
+          <Argument type="String" name="msg"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="error" returnType="void" visibility="package">
+          <Argument type="String" name="msg"/>
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="Configuration" package="org.apache.logging.log4j.core.config" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Methods>
+        <Method name="getName" returnType="String" visibility="package"/>
+        <Method name="getLoggerConfig" returnType="LoggerConfig" visibility="package">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAppender" returnType="T" visibility="package">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAppenders" returnType="Map&lt;String, Appender&gt;" visibility="package"/>
+        <Method name="addAppender" returnType="void" visibility="package">
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="getLoggers" returnType="Map&lt;String, LoggerConfig&gt;" visibility="package"/>
+        <Method name="addLoggerAppender" returnType="void" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="addLoggerFilter" returnType="void" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Filter" name="filter"/>
+        </Method>
+        <Method name="setLoggerAdditive" returnType="void" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="boolean" name="additive"/>
+        </Method>
+        <Method name="addLogger" returnType="void" visibility="package">
+          <Argument type="String" name="name"/>
+          <Argument type="LoggerConfig" name="loggerConfig"/>
+        </Method>
+        <Method name="removeLogger" returnType="void" visibility="package">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getPluginPackages" returnType="List&lt;String&gt;" visibility="package"/>
+        <Method name="getProperties" returnType="Map&lt;String, String&gt;" visibility="package"/>
+        <Method name="getRootLogger" returnType="LoggerConfig" visibility="package"/>
+        <Method name="addListener" returnType="void" visibility="package">
+          <Argument type="ConfigurationListener" name="listener"/>
+        </Method>
+        <Method name="removeListener" returnType="void" visibility="package">
+          <Argument type="ConfigurationListener" name="listener"/>
+        </Method>
+        <Method name="getStrSubstitutor" returnType="StrSubstitutor" visibility="package"/>
+        <Method name="createConfiguration" returnType="void" visibility="package">
+          <Argument type="Node" name="node"/>
+          <Argument type="LogEvent" name="event"/>
+        </Method>
+        <Method name="getComponent" returnType="T" visibility="package">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="addComponent" returnType="void" visibility="package">
+          <Argument type="String" name="name"/>
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="setAdvertiser" returnType="void" visibility="package">
+          <Argument type="Advertiser" name="advertiser"/>
+        </Method>
+        <Method name="getAdvertiser" returnType="Advertiser" visibility="package"/>
+        <Method name="isShutdownHookEnabled" returnType="boolean" visibility="package"/>
+        <Method name="getShutdownTimeoutMillis" returnType="long" visibility="package"/>
+        <Method name="getScheduler" returnType="ConfigurationScheduler" visibility="package"/>
+        <Method name="getConfigurationSource" returnType="ConfigurationSource" visibility="package"/>
+        <Method name="getCustomLevels" returnType="List&lt;CustomLevelConfig&gt;" visibility="package"/>
+        <Method name="getScriptManager" returnType="ScriptManager" visibility="package"/>
+        <Method name="getAsyncLoggerConfigDelegate" returnType="AsyncLoggerConfigDelegate" visibility="package"/>
+        <Method name="getWatchManager" returnType="WatchManager" visibility="package"/>
+        <Method name="getReliabilityStrategy" returnType="ReliabilityStrategy" visibility="package">
+          <Argument type="LoggerConfig" name="loggerConfig"/>
+        </Method>
+        <Method name="getNanoClock" returnType="NanoClock" visibility="package"/>
+        <Method name="setNanoClock" returnType="void" visibility="package">
+          <Argument type="NanoClock" name="nanoClock"/>
+        </Method>
+        <Method name="getLoggerContext" returnType="LoggerContext" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="Logger" package="org.apache.logging.log4j.core" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="privateConfig" type="PrivateConfig" visibility="protected" isVolatile="true"/>
+        <Field name="context" type="LoggerContext" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="LoggerContext" name="context"/>
+          <Argument type="String" name="name"/>
+          <Argument type="MessageFactory" name="messageFactory"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="writeReplace" returnType="Object" visibility="protected"/>
+        <Method name="getParent" returnType="Logger" visibility="public"/>
+        <Method name="getContext" returnType="LoggerContext" visibility="public"/>
+        <Method name="setLevel" returnType="void" visibility="public" isSynchronized="true">
+          <Argument type="Level" name="level"/>
+        </Method>
+        <Method name="get" returnType="LoggerConfig" visibility="public"/>
+        <Method name="logMessage" returnType="void" visibility="public">
+          <Argument type="String" name="fqcn"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="Message" name="message"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="params"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+          <Argument type="Object" name="p7"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+          <Argument type="Object" name="p7"/>
+          <Argument type="Object" name="p8"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+          <Argument type="Object" name="p7"/>
+          <Argument type="Object" name="p8"/>
+          <Argument type="Object" name="p9"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="CharSequence" name="message"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="Object" name="message"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="isEnabled" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="Message" name="message"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="addAppender" returnType="void" visibility="public">
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="removeAppender" returnType="void" visibility="public">
+          <Argument type="Appender" name="appender"/>
+        </Method>
+        <Method name="getAppenders" returnType="Map&lt;String, Appender&gt;" visibility="public"/>
+        <Method name="getFilters" returnType="Iterator&lt;Filter&gt;" visibility="public"/>
+        <Method name="getLevel" returnType="Level" visibility="public"/>
+        <Method name="filterCount" returnType="int" visibility="public"/>
+        <Method name="addFilter" returnType="void" visibility="public">
+          <Argument type="Filter" name="filter"/>
+        </Method>
+        <Method name="isAdditive" returnType="boolean" visibility="public"/>
+        <Method name="setAdditive" returnType="void" visibility="public">
+          <Argument type="boolean" name="additive"/>
+        </Method>
+        <Method name="updateConfiguration" returnType="void" visibility="protected">
+          <Argument type="Configuration" name="newConfig"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ConfigurationFactory" package="org.apache.logging.log4j.core.config" visibility="public" isAbstract="true" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="CONFIGURATION_FACTORY_PROPERTY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONFIGURATION_FILE_PROPERTY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CATEGORY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="LOGGER" type="Logger" visibility="protected" isStatic="true" isFinal="true"/>
+        <Field name="TEST_PREFIX" type="String" visibility="protected" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_PREFIX" type="String" visibility="protected" isStatic="true" isFinal="true"/>
+        <Field name="CLASS_LOADER_SCHEME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="CLASS_PATH_SCHEME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="factories" type="List&lt;ConfigurationFactory&gt;" visibility="private" isStatic="true" isVolatile="true"/>
+        <Field name="configFactory" type="ConfigurationFactory" visibility="private" isStatic="true"/>
+        <Field name="substitutor" type="StrSubstitutor" visibility="protected" isFinal="true"/>
+        <Field name="LOCK" type="Lock" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="ConfigurationFactory" visibility="public" isStatic="true"/>
+        <Method name="addFactory" returnType="void" visibility="private" isStatic="true">
+          <Argument type="Collection&lt;ConfigurationFactory&gt;" name="list"/>
+          <Argument type="String" name="factoryClass"/>
+        </Method>
+        <Method name="addFactory" returnType="void" visibility="private" isStatic="true">
+          <Argument type="Collection&lt;ConfigurationFactory&gt;" name="list"/>
+          <Argument type="Class&lt;? extends ConfigurationFactory&gt;" name="factoryClass"/>
+        </Method>
+        <Method name="setConfigurationFactory" returnType="void" visibility="public" isStatic="true">
+          <Argument type="ConfigurationFactory" name="factory"/>
+        </Method>
+        <Method name="resetConfigurationFactory" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="removeConfigurationFactory" returnType="void" visibility="public" isStatic="true">
+          <Argument type="ConfigurationFactory" name="factory"/>
+        </Method>
+        <Method name="getSupportedTypes" returnType="String[]" visibility="protected" isAbstract="true"/>
+        <Method name="isActive" returnType="boolean" visibility="protected"/>
+        <Method name="getConfiguration" returnType="Configuration" visibility="public" isAbstract="true">
+          <Argument type="LoggerContext" name="loggerContext"/>
+          <Argument type="ConfigurationSource" name="source"/>
+        </Method>
+        <Method name="getConfiguration" returnType="Configuration" visibility="public">
+          <Argument type="LoggerContext" name="loggerContext"/>
+          <Argument type="String" name="name"/>
+          <Argument type="URI" name="configLocation"/>
+        </Method>
+        <Method name="getConfiguration" returnType="Configuration" visibility="public">
+          <Argument type="LoggerContext" name="loggerContext"/>
+          <Argument type="String" name="name"/>
+          <Argument type="URI" name="configLocation"/>
+          <Argument type="ClassLoader" name="loader"/>
+        </Method>
+        <Method name="getInputFromUri" returnType="ConfigurationSource" visibility="protected">
+          <Argument type="URI" name="configLocation"/>
+        </Method>
+        <Method name="isClassLoaderUri" returnType="boolean" visibility="private" isStatic="true">
+          <Argument type="URI" name="uri"/>
+        </Method>
+        <Method name="extractClassLoaderUriPath" returnType="String" visibility="private" isStatic="true">
+          <Argument type="URI" name="uri"/>
+        </Method>
+        <Method name="getInputFromString" returnType="ConfigurationSource" visibility="protected">
+          <Argument type="String" name="config"/>
+          <Argument type="ClassLoader" name="loader"/>
+        </Method>
+        <Method name="getInputFromResource" returnType="ConfigurationSource" visibility="protected">
+          <Argument type="String" name="resource"/>
+          <Argument type="ClassLoader" name="loader"/>
+        </Method>
+        <Method name="getFactories" returnType="List&lt;ConfigurationFactory&gt;" visibility="package" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Interface name="Layout" package="org.apache.logging.log4j.core" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Methods>
+        <Method name="getFooter" returnType="byte[]" visibility="package"/>
+        <Method name="getHeader" returnType="byte[]" visibility="package"/>
+        <Method name="toByteArray" returnType="byte[]" visibility="package">
+          <Argument type="LogEvent" name="event"/>
+        </Method>
+        <Method name="toSerializable" returnType="T" visibility="package">
+          <Argument type="LogEvent" name="event"/>
+        </Method>
+        <Method name="getContentType" returnType="String" visibility="package"/>
+        <Method name="getContentFormat" returnType="Map&lt;String, String&gt;" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="AbstractLogEvent" package="org.apache.logging.log4j.core" visibility="public" isAbstract="true" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="toImmutable" returnType="LogEvent" visibility="public"/>
+        <Method name="getContextData" returnType="ReadOnlyStringMap" visibility="public"/>
+        <Method name="getContextMap" returnType="Map&lt;String, String&gt;" visibility="public"/>
+        <Method name="getContextStack" returnType="ContextStack" visibility="public"/>
+        <Method name="getLevel" returnType="Level" visibility="public"/>
+        <Method name="getLoggerFqcn" returnType="String" visibility="public"/>
+        <Method name="getLoggerName" returnType="String" visibility="public"/>
+        <Method name="getMarker" returnType="Marker" visibility="public"/>
+        <Method name="getMessage" returnType="Message" visibility="public"/>
+        <Method name="getSource" returnType="StackTraceElement" visibility="public"/>
+        <Method name="getThreadId" returnType="long" visibility="public"/>
+        <Method name="getThreadName" returnType="String" visibility="public"/>
+        <Method name="getThreadPriority" returnType="int" visibility="public"/>
+        <Method name="getThrown" returnType="Throwable" visibility="public"/>
+        <Method name="getThrownProxy" returnType="ThrowableProxy" visibility="public"/>
+        <Method name="getTimeMillis" returnType="long" visibility="public"/>
+        <Method name="isEndOfBatch" returnType="boolean" visibility="public"/>
+        <Method name="isIncludeLocation" returnType="boolean" visibility="public"/>
+        <Method name="setEndOfBatch" returnType="void" visibility="public">
+          <Argument type="boolean" name="endOfBatch"/>
+        </Method>
+        <Method name="setIncludeLocation" returnType="void" visibility="public">
+          <Argument type="boolean" name="locationRequired"/>
+        </Method>
+        <Method name="getNanoTime" returnType="long" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="LogEvent" package="org.apache.logging.log4j.core" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Methods>
+        <Method name="toImmutable" returnType="LogEvent" visibility="package"/>
+        <Method name="getContextMap" returnType="Map&lt;String, String&gt;" visibility="package"/>
+        <Method name="getContextData" returnType="ReadOnlyStringMap" visibility="package"/>
+        <Method name="getContextStack" returnType="ThreadContext.ContextStack" visibility="package"/>
+        <Method name="getLoggerFqcn" returnType="String" visibility="package"/>
+        <Method name="getLevel" returnType="Level" visibility="package"/>
+        <Method name="getLoggerName" returnType="String" visibility="package"/>
+        <Method name="getMarker" returnType="Marker" visibility="package"/>
+        <Method name="getMessage" returnType="Message" visibility="package"/>
+        <Method name="getTimeMillis" returnType="long" visibility="package"/>
+        <Method name="getSource" returnType="StackTraceElement" visibility="package"/>
+        <Method name="getThreadName" returnType="String" visibility="package"/>
+        <Method name="getThreadId" returnType="long" visibility="package"/>
+        <Method name="getThreadPriority" returnType="int" visibility="package"/>
+        <Method name="getThrown" returnType="Throwable" visibility="package"/>
+        <Method name="getThrownProxy" returnType="ThrowableProxy" visibility="package"/>
+        <Method name="isEndOfBatch" returnType="boolean" visibility="package"/>
+        <Method name="isIncludeLocation" returnType="boolean" visibility="package"/>
+        <Method name="setEndOfBatch" returnType="void" visibility="package">
+          <Argument type="boolean" name="endOfBatch"/>
+        </Method>
+        <Method name="setIncludeLocation" returnType="void" visibility="package">
+          <Argument type="boolean" name="locationRequired"/>
+        </Method>
+        <Method name="getNanoTime" returnType="long" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="LoggerContext" package="org.apache.logging.log4j.core" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="PROPERTY_CONFIG" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="NULL_CONFIGURATION" type="Configuration" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="loggerRegistry" type="LoggerRegistry&lt;Logger&gt;" visibility="private" isFinal="true"/>
+        <Field name="propertyChangeListeners" type="CopyOnWriteArrayList&lt;PropertyChangeListener&gt;" visibility="private" isFinal="true"/>
+        <Field name="configuration" type="Configuration" visibility="private" isVolatile="true"/>
+        <Field name="externalContext" type="Object" visibility="private"/>
+        <Field name="contextName" type="String" visibility="private"/>
+        <Field name="configLocation" type="URI" visibility="private" isVolatile="true"/>
+        <Field name="shutdownCallback" type="Cancellable" visibility="private"/>
+        <Field name="configLock" type="Lock" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="Object" name="externalContext"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="Object" name="externalContext"/>
+          <Argument type="URI" name="configLocn"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="Object" name="externalContext"/>
+          <Argument type="String" name="configLocn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getContext" returnType="LoggerContext" visibility="public" isStatic="true"/>
+        <Method name="getContext" returnType="LoggerContext" visibility="public" isStatic="true">
+          <Argument type="boolean" name="currentContext"/>
+        </Method>
+        <Method name="getContext" returnType="LoggerContext" visibility="public" isStatic="true">
+          <Argument type="ClassLoader" name="loader"/>
+          <Argument type="boolean" name="currentContext"/>
+          <Argument type="URI" name="configLocation"/>
+        </Method>
+        <Method name="start" returnType="void" visibility="public"/>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Configuration" name="config"/>
+        </Method>
+        <Method name="setUpShutdownHook" returnType="void" visibility="private"/>
+        <Method name="close" returnType="void" visibility="public"/>
+        <Method name="terminate" returnType="void" visibility="public"/>
+        <Method name="stop" returnType="boolean" visibility="public">
+          <Argument type="long" name="timeout"/>
+          <Argument type="TimeUnit" name="timeUnit"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getRootLogger" returnType="Logger" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setExternalContext" returnType="void" visibility="public">
+          <Argument type="Object" name="context"/>
+        </Method>
+        <Method name="getExternalContext" returnType="Object" visibility="public"/>
+        <Method name="getLogger" returnType="Logger" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getLoggers" returnType="Collection&lt;Logger&gt;" visibility="public"/>
+        <Method name="getLogger" returnType="Logger" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="MessageFactory" name="messageFactory"/>
+        </Method>
+        <Method name="hasLogger" returnType="boolean" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="hasLogger" returnType="boolean" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="MessageFactory" name="messageFactory"/>
+        </Method>
+        <Method name="hasLogger" returnType="boolean" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="Class&lt;? extends MessageFactory&gt;" name="messageFactoryClass"/>
+        </Method>
+        <Method name="getConfiguration" returnType="Configuration" visibility="public"/>
+        <Method name="addFilter" returnType="void" visibility="public">
+          <Argument type="Filter" name="filter"/>
+        </Method>
+        <Method name="removeFilter" returnType="void" visibility="public">
+          <Argument type="Filter" name="filter"/>
+        </Method>
+        <Method name="setConfiguration" returnType="Configuration" visibility="private">
+          <Argument type="Configuration" name="config"/>
+        </Method>
+        <Method name="firePropertyChangeEvent" returnType="void" visibility="private">
+          <Argument type="PropertyChangeEvent" name="event"/>
+        </Method>
+        <Method name="addPropertyChangeListener" returnType="void" visibility="public">
+          <Argument type="PropertyChangeListener" name="listener"/>
+        </Method>
+        <Method name="removePropertyChangeListener" returnType="void" visibility="public">
+          <Argument type="PropertyChangeListener" name="listener"/>
+        </Method>
+        <Method name="getConfigLocation" returnType="URI" visibility="public"/>
+        <Method name="setConfigLocation" returnType="void" visibility="public">
+          <Argument type="URI" name="configLocation"/>
+        </Method>
+        <Method name="reconfigure" returnType="void" visibility="private">
+          <Argument type="URI" name="configURI"/>
+        </Method>
+        <Method name="reconfigure" returnType="void" visibility="public"/>
+        <Method name="updateLoggers" returnType="void" visibility="public"/>
+        <Method name="updateLoggers" returnType="void" visibility="public">
+          <Argument type="Configuration" name="config"/>
+        </Method>
+        <Method name="onChange" returnType="void" visibility="public" isSynchronized="true">
+          <Argument type="Reconfigurable" name="reconfigurable"/>
+        </Method>
+        <Method name="newInstance" returnType="Logger" visibility="protected">
+          <Argument type="LoggerContext" name="ctx"/>
+          <Argument type="String" name="name"/>
+          <Argument type="MessageFactory" name="messageFactory"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AbstractAppender" package="org.apache.logging.log4j.core.appender" visibility="public" isAbstract="true" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private" isFinal="true"/>
+        <Field name="ignoreExceptions" type="boolean" visibility="private" isFinal="true"/>
+        <Field name="layout" type="Layout&lt;? extends Serializable&gt;" visibility="private" isFinal="true"/>
+        <Field name="handler" type="ErrorHandler" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="String" name="name"/>
+          <Argument type="Filter" name="filter"/>
+          <Argument type="Layout&lt;? extends Serializable&gt;" name="layout"/>
+        </Constructor>
+        <Constructor visibility="protected">
+          <Argument type="String" name="name"/>
+          <Argument type="Filter" name="filter"/>
+          <Argument type="Layout&lt;? extends Serializable&gt;" name="layout"/>
+          <Argument type="boolean" name="ignoreExceptions"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="parseInt" returnType="int" visibility="public" isStatic="true">
+          <Argument type="String" name="s"/>
+          <Argument type="int" name="defaultValue"/>
+        </Method>
+        <Method name="error" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="error" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="error" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="getHandler" returnType="ErrorHandler" visibility="public"/>
+        <Method name="getLayout" returnType="Layout&lt;? extends Serializable&gt;" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="ignoreExceptions" returnType="boolean" visibility="public"/>
+        <Method name="setHandler" returnType="void" visibility="public">
+          <Argument type="ErrorHandler" name="handler"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="Filter" package="org.apache.logging.log4j.core" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Methods>
+        <Method name="getOnMismatch" returnType="Result" visibility="package"/>
+        <Method name="getOnMatch" returnType="Result" visibility="package"/>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="msg"/>
+          <Argument type="Object" name="params"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+          <Argument type="Object" name="p7"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+          <Argument type="Object" name="p7"/>
+          <Argument type="Object" name="p8"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Object" name="p0"/>
+          <Argument type="Object" name="p1"/>
+          <Argument type="Object" name="p2"/>
+          <Argument type="Object" name="p3"/>
+          <Argument type="Object" name="p4"/>
+          <Argument type="Object" name="p5"/>
+          <Argument type="Object" name="p6"/>
+          <Argument type="Object" name="p7"/>
+          <Argument type="Object" name="p8"/>
+          <Argument type="Object" name="p9"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="Object" name="msg"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="Logger" name="logger"/>
+          <Argument type="Level" name="level"/>
+          <Argument type="Marker" name="marker"/>
+          <Argument type="Message" name="msg"/>
+          <Argument type="Throwable" name="t"/>
+        </Method>
+        <Method name="filter" returnType="Result" visibility="package">
+          <Argument type="LogEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="AbstractLifeCycle" package="org.apache.logging.log4j.core" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="DEFAULT_STOP_TIMEOUT" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_STOP_TIMEUNIT" type="TimeUnit" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="LOGGER" type="org.apache.logging.log4j.Logger" visibility="protected" isStatic="true" isFinal="true"/>
+        <Field name="state" type="LifeCycle.State" visibility="private" isVolatile="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getStatusLogger" returnType="org.apache.logging.log4j.Logger" visibility="protected" isStatic="true"/>
+        <Method name="equalsImpl" returnType="boolean" visibility="protected">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="getState" returnType="LifeCycle.State" visibility="public"/>
+        <Method name="hashCodeImpl" returnType="int" visibility="protected"/>
+        <Method name="isInitialized" returnType="boolean" visibility="public"/>
+        <Method name="isStarted" returnType="boolean" visibility="public"/>
+        <Method name="isStarting" returnType="boolean" visibility="public"/>
+        <Method name="isStopped" returnType="boolean" visibility="public"/>
+        <Method name="isStopping" returnType="boolean" visibility="public"/>
+        <Method name="setStarted" returnType="void" visibility="protected"/>
+        <Method name="setStarting" returnType="void" visibility="protected"/>
+        <Method name="setState" returnType="void" visibility="protected">
+          <Argument type="LifeCycle.State" name="newState"/>
+        </Method>
+        <Method name="setStopped" returnType="void" visibility="protected"/>
+        <Method name="setStopping" returnType="void" visibility="protected"/>
+        <Method name="initialize" returnType="void" visibility="public"/>
+        <Method name="start" returnType="void" visibility="public"/>
+        <Method name="stop" returnType="void" visibility="public"/>
+        <Method name="stop" returnType="boolean" visibility="protected">
+          <Argument type="Future&lt;?&gt;" name="future"/>
+        </Method>
+        <Method name="stop" returnType="boolean" visibility="public">
+          <Argument type="long" name="timeout"/>
+          <Argument type="TimeUnit" name="timeUnit"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="Appender" package="org.apache.logging.log4j.core" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Methods>
+        <Method name="append" returnType="void" visibility="package">
+          <Argument type="LogEvent" name="event"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="package"/>
+        <Method name="getLayout" returnType="Layout&lt;? extends Serializable&gt;" visibility="package"/>
+        <Method name="ignoreExceptions" returnType="boolean" visibility="package"/>
+        <Method name="getHandler" returnType="ErrorHandler" visibility="package"/>
+        <Method name="setHandler" returnType="void" visibility="package">
+          <Argument type="ErrorHandler" name="handler"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="ColumnConfig" package="org.apache.logging.log4j.core.appender.db.jdbc" visibility="public" isFinal="true" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="LOGGER" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="columnName" type="String" visibility="private" isFinal="true"/>
+        <Field name="layout" type="PatternLayout" visibility="private" isFinal="true"/>
+        <Field name="literalValue" type="String" visibility="private" isFinal="true"/>
+        <Field name="eventTimestamp" type="boolean" visibility="private" isFinal="true"/>
+        <Field name="unicode" type="boolean" visibility="private" isFinal="true"/>
+        <Field name="clob" type="boolean" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="String" name="columnName"/>
+          <Argument type="PatternLayout" name="layout"/>
+          <Argument type="String" name="literalValue"/>
+          <Argument type="boolean" name="eventDate"/>
+          <Argument type="boolean" name="unicode"/>
+          <Argument type="boolean" name="clob"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getColumnName" returnType="String" visibility="public"/>
+        <Method name="getLayout" returnType="PatternLayout" visibility="public"/>
+        <Method name="getLiteralValue" returnType="String" visibility="public"/>
+        <Method name="isEventTimestamp" returnType="boolean" visibility="public"/>
+        <Method name="isUnicode" returnType="boolean" visibility="public"/>
+        <Method name="isClob" returnType="boolean" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="createColumnConfig" returnType="ColumnConfig" visibility="public" isStatic="true">
+          <Argument type="Configuration" name="config"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="pattern"/>
+          <Argument type="String" name="literalValue"/>
+          <Argument type="String" name="eventTimestamp"/>
+          <Argument type="String" name="unicode"/>
+          <Argument type="String" name="clob"/>
+        </Method>
+        <Method name="newBuilder" returnType="Builder" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Interface name="StringLayout" package="org.apache.logging.log4j.core" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Methods>
+        <Method name="getCharset" returnType="Charset" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="Core" package="org.apache.logging.log4j.core" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="CATEGORY_NAME" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="StrSubstitutor" package="org.apache.logging.log4j.core.lookup" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="DEFAULT_ESCAPE" type="char" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_PREFIX" type="StrMatcher" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_SUFFIX" type="StrMatcher" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_VALUE_DELIMITER" type="StrMatcher" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="BUF_SIZE" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="escapeChar" type="char" visibility="private"/>
+        <Field name="prefixMatcher" type="StrMatcher" visibility="private"/>
+        <Field name="suffixMatcher" type="StrMatcher" visibility="private"/>
+        <Field name="valueDelimiterMatcher" type="StrMatcher" visibility="private"/>
+        <Field name="variableResolver" type="StrLookup" visibility="private"/>
+        <Field name="enableSubstitutionInVariables" type="boolean" visibility="private"/>
+        <Field name="configuration" type="Configuration" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Map&lt;String, String&gt;" name="valueMap"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Map&lt;String, String&gt;" name="valueMap"/>
+          <Argument type="String" name="prefix"/>
+          <Argument type="String" name="suffix"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Map&lt;String, String&gt;" name="valueMap"/>
+          <Argument type="String" name="prefix"/>
+          <Argument type="String" name="suffix"/>
+          <Argument type="char" name="escape"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Map&lt;String, String&gt;" name="valueMap"/>
+          <Argument type="String" name="prefix"/>
+          <Argument type="String" name="suffix"/>
+          <Argument type="char" name="escape"/>
+          <Argument type="String" name="valueDelimiter"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Properties" name="properties"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="StrLookup" name="variableResolver"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="StrLookup" name="variableResolver"/>
+          <Argument type="String" name="prefix"/>
+          <Argument type="String" name="suffix"/>
+          <Argument type="char" name="escape"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="StrLookup" name="variableResolver"/>
+          <Argument type="String" name="prefix"/>
+          <Argument type="String" name="suffix"/>
+          <Argument type="char" name="escape"/>
+          <Argument type="String" name="valueDelimiter"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="StrLookup" name="variableResolver"/>
+          <Argument type="StrMatcher" name="prefixMatcher"/>
+          <Argument type="StrMatcher" name="suffixMatcher"/>
+          <Argument type="char" name="escape"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="StrLookup" name="variableResolver"/>
+          <Argument type="StrMatcher" name="prefixMatcher"/>
+          <Argument type="StrMatcher" name="suffixMatcher"/>
+          <Argument type="char" name="escape"/>
+          <Argument type="StrMatcher" name="valueDelimiterMatcher"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="replace" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Object" name="source"/>
+          <Argument type="Map&lt;String, String&gt;" name="valueMap"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Object" name="source"/>
+          <Argument type="Map&lt;String, String&gt;" name="valueMap"/>
+          <Argument type="String" name="prefix"/>
+          <Argument type="String" name="suffix"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Object" name="source"/>
+          <Argument type="Properties" name="valueProperties"/>
+        </Method>
+        <Method name="toTypeSafeMap" returnType="Map&lt;String, String&gt;" visibility="private" isStatic="true">
+          <Argument type="Properties" name="properties"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="String" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="String" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="String" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="String" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="char[]" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="char[]" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="char[]" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="char[]" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="StringBuffer" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuffer" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="StringBuffer" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuffer" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="StringBuilder" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuilder" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="StringBuilder" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuilder" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="Object" name="source"/>
+        </Method>
+        <Method name="replace" returnType="String" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="Object" name="source"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="StringBuffer" name="source"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="StringBuffer" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuffer" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="StringBuilder" name="source"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuilder" name="source"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="StringBuilder" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="replaceIn" returnType="boolean" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuilder" name="source"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="substitute" returnType="boolean" visibility="protected">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuilder" name="buf"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="substitute" returnType="int" visibility="private">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="StringBuilder" name="buf"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+          <Argument type="List&lt;String&gt;" name="priorVariables"/>
+        </Method>
+        <Method name="checkCyclicSubstitution" returnType="void" visibility="private">
+          <Argument type="String" name="varName"/>
+          <Argument type="List&lt;String&gt;" name="priorVariables"/>
+        </Method>
+        <Method name="resolveVariable" returnType="String" visibility="protected">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="String" name="variableName"/>
+          <Argument type="StringBuilder" name="buf"/>
+          <Argument type="int" name="startPos"/>
+          <Argument type="int" name="endPos"/>
+        </Method>
+        <Method name="getEscapeChar" returnType="char" visibility="public"/>
+        <Method name="setEscapeChar" returnType="void" visibility="public">
+          <Argument type="char" name="escapeCharacter"/>
+        </Method>
+        <Method name="getVariablePrefixMatcher" returnType="StrMatcher" visibility="public"/>
+        <Method name="setVariablePrefixMatcher" returnType="StrSubstitutor" visibility="public">
+          <Argument type="StrMatcher" name="prefixMatcher"/>
+        </Method>
+        <Method name="setVariablePrefix" returnType="StrSubstitutor" visibility="public">
+          <Argument type="char" name="prefix"/>
+        </Method>
+        <Method name="setVariablePrefix" returnType="StrSubstitutor" visibility="public">
+          <Argument type="String" name="prefix"/>
+        </Method>
+        <Method name="getVariableSuffixMatcher" returnType="StrMatcher" visibility="public"/>
+        <Method name="setVariableSuffixMatcher" returnType="StrSubstitutor" visibility="public">
+          <Argument type="StrMatcher" name="suffixMatcher"/>
+        </Method>
+        <Method name="setVariableSuffix" returnType="StrSubstitutor" visibility="public">
+          <Argument type="char" name="suffix"/>
+        </Method>
+        <Method name="setVariableSuffix" returnType="StrSubstitutor" visibility="public">
+          <Argument type="String" name="suffix"/>
+        </Method>
+        <Method name="getValueDelimiterMatcher" returnType="StrMatcher" visibility="public"/>
+        <Method name="setValueDelimiterMatcher" returnType="StrSubstitutor" visibility="public">
+          <Argument type="StrMatcher" name="valueDelimiterMatcher"/>
+        </Method>
+        <Method name="setValueDelimiter" returnType="StrSubstitutor" visibility="public">
+          <Argument type="char" name="valueDelimiter"/>
+        </Method>
+        <Method name="setValueDelimiter" returnType="StrSubstitutor" visibility="public">
+          <Argument type="String" name="valueDelimiter"/>
+        </Method>
+        <Method name="getVariableResolver" returnType="StrLookup" visibility="public"/>
+        <Method name="setVariableResolver" returnType="void" visibility="public">
+          <Argument type="StrLookup" name="variableResolver"/>
+        </Method>
+        <Method name="isEnableSubstitutionInVariables" returnType="boolean" visibility="public"/>
+        <Method name="setEnableSubstitutionInVariables" returnType="void" visibility="public">
+          <Argument type="boolean" name="enableSubstitutionInVariables"/>
+        </Method>
+        <Method name="getChars" returnType="char[]" visibility="private">
+          <Argument type="StringBuilder" name="sb"/>
+        </Method>
+        <Method name="appendWithSeparators" returnType="void" visibility="public">
+          <Argument type="StringBuilder" name="sb"/>
+          <Argument type="Iterable&lt;?&gt;" name="iterable"/>
+          <Argument type="String" name="separator"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="setConfiguration" returnType="void" visibility="public">
+          <Argument type="Configuration" name="configuration"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="StrLookup" package="org.apache.logging.log4j.core.lookup" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Methods>
+        <Method name="lookup" returnType="String" visibility="package">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="lookup" returnType="String" visibility="package">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="String" name="key"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="JsonLayout" package="org.apache.logging.log4j.core.layout" visibility="public" isFinal="true" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="DEFAULT_FOOTER" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_HEADER" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="CONTENT_TYPE" type="String" visibility="package" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="Configuration" name="config"/>
+          <Argument type="boolean" name="locationInfo"/>
+          <Argument type="boolean" name="properties"/>
+          <Argument type="boolean" name="encodeThreadContextAsList"/>
+          <Argument type="boolean" name="complete"/>
+          <Argument type="boolean" name="compact"/>
+          <Argument type="boolean" name="eventEol"/>
+          <Argument type="String" name="headerPattern"/>
+          <Argument type="String" name="footerPattern"/>
+          <Argument type="Charset" name="charset"/>
+          <Argument type="boolean" name="includeStacktrace"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getHeader" returnType="byte[]" visibility="public"/>
+        <Method name="getFooter" returnType="byte[]" visibility="public"/>
+        <Method name="getContentFormat" returnType="Map&lt;String, String&gt;" visibility="public"/>
+        <Method name="getContentType" returnType="/**
+     * @return The content type.
+     */
+String" visibility="public"/>
+        <Method name="createLayout" returnType="JsonLayout" visibility="public" isStatic="true">
+          <Argument type="Configuration" name="config"/>
+          <Argument type="boolean" name="locationInfo"/>
+          <Argument type="boolean" name="properties"/>
+          <Argument type="boolean" name="propertiesAsList"/>
+          <Argument type="boolean" name="complete"/>
+          <Argument type="boolean" name="compact"/>
+          <Argument type="boolean" name="eventEol"/>
+          <Argument type="String" name="headerPattern"/>
+          <Argument type="String" name="footerPattern"/>
+          <Argument type="Charset" name="charset"/>
+          <Argument type="boolean" name="includeStacktrace"/>
+        </Method>
+        <Method name="newBuilder" returnType="B" visibility="public" isStatic="true"/>
+        <Method name="createDefaultLayout" returnType="JsonLayout" visibility="public" isStatic="true"/>
+        <Method name="toSerializable" returnType="void" visibility="public">
+          <Argument type="LogEvent" name="event"/>
+          <Argument type="Writer" name="writer"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="substitutor" source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.lookup.StrSubstitutor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.LogEvent" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Layout" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.apache.logging.log4j.core.AbstractLogEvent" target="org.apache.logging.log4j.core.LogEvent"/>
+    <UseRelation source="org.apache.logging.log4j.core.ErrorHandler" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.appender.AbstractAppender" target="org.apache.logging.log4j.core.ErrorHandler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.AbstractLifeCycle"/>
+    <HasRelation name="LOGGER" source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.lookup.StrSubstitutor" target="org.apache.logging.log4j.core.lookup.StrLookup" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOGGER" source="org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig" target="org.apache.logging.log4j.core.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Logger" target="org.apache.logging.log4j.core.config.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig" target="org.apache.logging.log4j.core.Layout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.LoggerContext" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configuration" source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.config.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.config.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.apache.logging.log4j.core.appender.AbstractAppender" target="org.apache.logging.log4j.core.Appender"/>
+    <UseRelation source="org.apache.logging.log4j.core.lookup.StrLookup" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Logger" target="org.apache.logging.log4j.core.Filter" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Logger" target="org.apache.logging.log4j.core.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.lookup.StrSubstitutor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="context" source="org.apache.logging.log4j.core.Logger" target="org.apache.logging.log4j.core.LoggerContext" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig" target="org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.layout.JsonLayout" target="org.apache.logging.log4j.core.layout.JsonLayout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.apache.logging.log4j.core.StringLayout" target="org.apache.logging.log4j.core.Layout"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.appender.AbstractAppender" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.config.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.AbstractLifeCycle" target="org.apache.logging.log4j.core.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.LoggerContext" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Filter" target="org.apache.logging.log4j.core.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Appender" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.appender.AbstractAppender" target="org.apache.logging.log4j.core.Layout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configuration" source="org.apache.logging.log4j.core.lookup.StrSubstitutor" target="org.apache.logging.log4j.core.config.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Appender" target="org.apache.logging.log4j.core.ErrorHandler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Filter" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.config.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.lookup.StrSubstitutor" target="org.apache.logging.log4j.core.lookup.StrSubstitutor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configFactory" source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.config.ConfigurationFactory" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="variableResolver" source="org.apache.logging.log4j.core.lookup.StrSubstitutor" target="org.apache.logging.log4j.core.lookup.StrLookup" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="NULL_CONFIGURATION" source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.config.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.Filter" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.AbstractLogEvent" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.lookup.StrSubstitutor" target="org.apache.logging.log4j.core.config.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Appender" target="org.apache.logging.log4j.core.Layout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.Appender" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Logger" target="org.apache.logging.log4j.core.LoggerContext" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="org.apache.logging.log4j.core.appender.AbstractAppender" target="org.apache.logging.log4j.core.ErrorHandler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loggerRegistry" source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.layout.JsonLayout" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.Configuration" target="org.apache.logging.log4j.core.LoggerContext" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.lookup.StrSubstitutor" target="org.apache.logging.log4j.core.LogEvent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.Logger" target="org.apache.logging.log4j.core.Appender" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="factories" source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.config.ConfigurationFactory" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ConfigurationFactory&gt;"/>
+    <UseRelation source="org.apache.logging.log4j.core.config.ConfigurationFactory" target="org.apache.logging.log4j.core.config.ConfigurationFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.apache.logging.log4j.core.LoggerContext" target="org.apache.logging.log4j.core.Filter" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
